@@ -52,7 +52,8 @@ const material = new THREE.ShaderMaterial({
   uniforms : {
     uTexture : { value : new THREE.Vector2(0, 0) },
     uProgress : { value : settings.progress },
-    uTexture : { value : textures[0] }
+    uTexture : { value : textures[0] },
+    uTime : { value : 0 }
   },
   side : 2
 })
@@ -121,10 +122,10 @@ renderer.setClearColor (0x000000, 0.0);
 /**
  * Tick function
 */
-
+let time = 0;
 const tick = () =>
 {
-
+  time += 0.001;
   renderer.setSize(sizes.width, sizes.height)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -137,6 +138,7 @@ const tick = () =>
   planeMesh.position.x = Math.sin(value.x) * 400;
   planeMesh.position.z = Math.cos(value.x) * 200;
   planeMesh.rotation.y = (value.x)
+  planeMesh.material.uniforms.uTime.value = time;
 
   // update orbitol controls
   // controls.update()
