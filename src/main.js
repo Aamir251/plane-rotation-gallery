@@ -5,9 +5,8 @@ import vertexShader from './shaders/vertex.glsl'
 import fragmentShader from './shaders/fragment.glsl'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { img1, img2, img3, img4 } from './textures-export';
-
 import gsap from 'gsap';
-
+import pageableMin from 'pageable';
 
 const canvas = document.querySelector("canvas#slider");
 const sizes = {
@@ -86,25 +85,23 @@ let value = {
 }
 
 let timeoutId;
-const updateMeshPosition = () => {
+const updateMeshPosition = (index) => {
   clearTimeout(timeoutId)
   gsap.to(value, {
     x : value.x + Math.PI * 2,
-    duration : 1,
+    duration : 0.6,
     onStart : () => {
       timeoutId = setTimeout(() => {
-        planeMesh.material.uniforms.uTexture.value = textures[1]
+        planeMesh.material.uniforms.uTexture.value = textures[index]
       }, 400)
     }
   })
 
-  
 }
 
 
 gui.add(settings, 'progress').min(0).max(1).step(0.1)
 
-window.addEventListener('click', updateMeshPosition)
 
 /**
  * Renderer
@@ -112,6 +109,8 @@ window.addEventListener('click', updateMeshPosition)
 const renderer = new THREE.WebGLRenderer({
   canvas
 })
+renderer.setClearColor (0x000000, 0.0);
+
 
 /** 
  * Orbit Controls
@@ -177,3 +176,16 @@ const handleResize = () =>
 
 window.addEventListener('resize', handleResize)
 handleResize()
+
+/**
+ * FullPage JS
+*/
+
+new pageableMin("#container", {
+  onStart : (el) => {
+    updateMeshPosition(Number(el)-1)
+  },
+  onScroll : (el) => {
+    // console.log("update ", el);
+  }
+});

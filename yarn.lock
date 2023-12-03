@@ -239,6 +239,11 @@ nanoid@^3.3.6:
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.7.tgz"
   integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
 
+pageable@^0.6.8:
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/pageable/-/pageable-0.6.8.tgz#9a6845dd457b0ce4b584541982ef20b7d93cc72a"
+  integrity sha512-uVE7Fxa73483g8bl4v+YKf6jNcJlqhu3U/ETzx+nJ9n34yKCLS/0/t5o3ZwkuUWpTQyogfbs0fFUY6R6Wpa0yw==
+
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
