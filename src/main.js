@@ -81,7 +81,7 @@ const scrollEvent = () =>
 
 scrollEvent()
 
-let value = {
+const value = {
   x : 0
 }
 
@@ -94,9 +94,14 @@ const updateMeshPosition = (index) => {
     onStart : () => {
       timeoutId = setTimeout(() => {
         planeMesh.material.uniforms.uTexture.value = textures[index]
-      }, 400)
-    }
+      }, 250)
+    },
+    // onComplete : () => {
+    //   value.x += Math.PI * 2
+    // }
   })
+  
+
 
 }
 
@@ -129,11 +134,10 @@ const tick = () =>
   renderer.setSize(sizes.width, sizes.height)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  scroll += (scrollTarget - scroll) * 0.08
+  scroll += (scrollTarget - scroll) * 0.08;
   scroll *= 0.9;
   scrollTarget *= 0.9;
   currentScroll += scroll * 0.005;
-
 
   planeMesh.position.x = Math.sin(value.x) * 400;
   planeMesh.position.z = Math.cos(value.x) * 200;
@@ -184,6 +188,7 @@ handleResize()
 */
 
 new pageableMin("#container", {
+  animation : 600,
   onStart : (el) => {
     updateMeshPosition(Number(el)-1)
   },

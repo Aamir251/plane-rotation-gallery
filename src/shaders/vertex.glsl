@@ -1,10 +1,7 @@
-
 varying vec2 vUv;
-
 varying vec3 newPosition;
 uniform float uTime;
 uniform float uProgress;
-
 varying float vTime;
 
 void main()

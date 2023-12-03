@@ -20,6 +20,10 @@ canvas#slider {
 section {
     height: 100%;
     position: relative;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    /* color: white; */
 }
 
 .project-section {
